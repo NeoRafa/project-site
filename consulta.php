@@ -8,15 +8,27 @@
 	<link rel="stylesheet" href="css/consulta.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+	<?php 
+	
+	session_start();
+	if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+	{
+		unset($_SESSION['login']);
+		unset($_SESSION['senha']);
+		header('location:logincadastro.php');
+	}
+
+	?>
 </head>
 <body>
 	<?php include("cabecalho.php");?>
+	<!-- MIOLO DO CODIGO -->
 	<section>
 		<div class="container agendamento">
-			<script type="text/javascript" src="//medconsulta.simplybook.me/iframe/pm_loader_v2.php?width=650&url=//medconsulta.simplybook.me&theme=clean_slide_cyan&layout=cleanside&timeline=modern&mode=auto&mobile_redirect=0&hidden_steps=event&event=2"></script>
+			
 		</div>
 	</section>
-
-	<!-- MIOLO DO CODIGO -->
+	<!-- fim do miolo -->
+	<?php include("rodape.php") ?>
 </body>
 </html>

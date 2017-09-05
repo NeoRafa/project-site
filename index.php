@@ -14,8 +14,10 @@
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet"> 
 	<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+	<?php session_start(); ?>
 </head>
 <body>
+
 	<?php include("cabecalho.php") ?>
 
 	<section class="additions">

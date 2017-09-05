@@ -6,15 +6,7 @@
 .navbar ul li {
 	color: #a4a6a8;	
 }
-.navbar ul li li{
-	color: #a4a6a8;
-	position: relative;
-}
 
-.navbar-nav{
-	position: absolute;
-	right: 34%;
-}
 .navbar ul li:hover {
 	box-shadow: 0 0 5px #fff;
 	transition: 0.2s;
