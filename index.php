@@ -2,11 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home Page MedConsulta</title>
+	<title>Clinica MedConsulta Home</title>
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/cabecalho.css">
 	<link rel="stylesheet" href="css/styles.css">
+	<script src="js/jquery.js"></script>
+	<script src ="js/hoverf.js"></script>
+	<script src="js/banner.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet"> 
 	<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
@@ -54,41 +57,66 @@
 	<section class="block">
 		<div class= "container">
 			<h1 class="destaques"> A missão da <strong>MedConsulta</strong> é sua <strong>saúde!</strong> </h1>
-			<h2 class="destaques">Conheca nossos <strong>diferenciais: </strong></h2>
-			<ul class ="diferenciais">
-				<li>
+			<h2 class="destaques">    Conheca nossos <strong>diferenciais: </strong></h2>
+			<div class ="diferenciais">
 					<figure>
 						<img src="img/checked.png" alt="confianca">
+						<figcaption>
+							<i class="em em-blush"></i>
+							<i class="em em-blush"></i>
+							Se esqueca dos planos de saude: o aperto do fim do mes acabou. Nossos precos foram pensados para tornar a saude acessivel a todos, e com certeza voce encontrara a consulta ideal aqui! 
+							<i class="em em-blush"></i>
+							<i class="em em-blush"></i>
+						</figcaption>
 					</figure>
-					<figcaption>
-						<i class="em em-blush"></i>
-						<i class="em em-blush"></i>
-						Se esqueca dos planos de saude: o aperto do fim do mes acabou. Nossos precos foram pensados para tornar a saude acessivel a todos, e com certeza voce encontrara a consulta ideal aqui! 
-						<i class="em em-blush"></i>
-						<i class="em em-blush"></i>
-					</figcaption>
-				</li>
-				<li>
+
 					<figure>
 						<img src="img/file.png" alt="ficha">
+						<figcaption>
+							<i class= "em em-clap"></i>
+							<i class= "em em-clap"></i>
+							Somos uma policlinica, ou seja, contamos com diversas especializacoes: psiquiatra, clinico, oftalmologista e cardio 
+							<i class= "em em-clap"></i>
+							<i class= "em em-clap"></i>
+						</figcaption>
 					</figure>
-					<figcaption>
-						<i class= "em em-clap"></i>
-						<i class= "em em-clap"></i>
-						Somos uma policlinica, ou seja, contamos com diversas especializacoes: psiquiatra, clinico, oftalmologista e cardio 
-						<i class= "em em-clap"></i>
-						<i class= "em em-clap"></i>
-					</figcaption>
-				</li>
-				<li>
+
 					<figure>
 						<img src="img/thumb-up.png" alt="carinho">
+						<figcaption id="joinha">
+							Prezamos pela nossa relacao com voce. Somos atenciosos e escutaremos todas suas queixas: espere sempre ser bem atendido.
+						</figcaption>
 					</figure>
-					<figcaption>
-						Prezamos pela nossa relacao com voce. Somos atenciosos e escutaremos todas suas queixas: espere sempre ser bem atendido.
-					</figcaption>
-				</li>
-			</ul>
+			</div>
 		</div>
 	</section>
+	<section class="block">
+		<h2 class="destaque1">Venha ver nossos <strong>serviços</strong>: </h2>
+		<div class="container">		
+			<div class="row">
+				<div class="col-sm-6">
+					<figure class="consultaservico">
+						<img src="img/doctor(1).png" alt="Realizamos consultas!">
+						<figcaption>
+							<a class="destaque" href="consulta.php">Clique aqui para marcar uma consulta</a>
+						</figcaption>
+
+
+					</figure>
+				</div>
+				<div class="col-sm-6">
+					<figure class="consultaservico">
+						<img src="img/syringe(1).png" alt="Exames de tipos variados!">
+						<figcaption>
+							<a class="destaque" href="#">Clique aqui para conhecer sobre nossos exames rapidos</a>
+						</figcaption>
+
+					</figure>
+				</div>
+
+
+			</div>
+		</div>
+	</section>
+
 	<?php include("rodape.php"); ?>

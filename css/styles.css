@@ -1,6 +1,11 @@
-.additions {
-	background-color : #e6e6e6;
+body {
+	background-color: #e6e6e6;
 }
+.additions {
+	margin-top: 55px;
+	background-color : #f2f2f2;
+}
+
 figure {
 	text-align: center;
 	margin-bottom: 20px;
@@ -20,19 +25,33 @@ figcaption h4 {
 
 .img-thumbnail {
 	height: 250px;
+	width: 100%;
 }
 
 .destaques {
-	padding-top: 25px;
+	padding-top: 45px;
 	color: #737373;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 	text-align: center;
 }
-
+.destaque1 {
+	color: #737373;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	text-align: center;
+}
+.destaque {
+	color: #737373;
+	margin-top: 20px;
+	padding-top: 20px;
+	font-size: 20px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
 .block {
-	background-color: #f2f2f2;
+	margin-bottom: 0 auto;
+	background-color: #e6e6e6;
 }
 .diferenciais  {
+	margin-bottom: 0;
 	list-style-type: none;
 	color: #737373;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -41,15 +60,29 @@ figcaption h4 {
 	font-weight: bold;
 }
 
-.diferenciais li {
+.diferenciais figure {
+	padding-top: 20px;
+	text-align: center;
+}
+
+.diferenciais figure figcaption{
 	padding-top: 20px;
 }
+
 .display {
 	position: absolute;
 	top: 150px;
 }
 .display figure {
-	text-anchor: center;
+	text-align: center;
 	margin-right: 40px;
 	display: inline-block;
+}
+
+#joinha {
+	padding-bottom: 10px;
+}
+.consultaservico figcaption{
+	margin-top: 40px;
+	text-align: center;
 }
