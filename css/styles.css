@@ -47,7 +47,7 @@ figcaption h4 {
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 .block {
-	margin-bottom: 0 auto;
+	margin-bottom: 0;
 	background-color: #e6e6e6;
 }
 .diferenciais  {
@@ -60,7 +60,11 @@ figcaption h4 {
 	font-weight: bold;
 }
 
-.diferenciais figure {
+.hideme {
+	opacity:0;
+}
+
+.diferenciais  {
 	padding-top: 20px;
 	text-align: center;
 }
