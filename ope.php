@@ -1,28 +1,12 @@
 <?php 
 
 
-
-//inicia sessao do usuario
-session_start();
-
-//variaveis locais 
-$localhost = 'localhost';
-$passwd = '32060047_ac';
-$user = 'root';
-$database = 'agenda';
+include("connection.php");
+//variaveis locais
 $login = $_POST['login'];
 $senha = $_POST['senha'];
+//*********************
 
-//conexao ao db...
-
-$con = new mysqli($localhost,$user,$passwd,$database
-	) or die();
-
-if ($con->connect_error) {
-	die("Database connection failed: " . $con->connect_error);
-}
-
-echo "Conectado!";
 $sql = "SELECT * FROM cadastros WHERE name = ? AND senha = ?";
 
 $stmt = $con->prepare($sql);

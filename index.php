@@ -10,6 +10,7 @@
 	<script src="js/jquery.js"></script>
 	<script src ="js/hoverf.js"></script>
 	<script src="js/scroll.js"></script>
+	<script src="js/bootstrap.js"></script>
 	<script src="js/banner.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet"> 
@@ -23,7 +24,7 @@
 	<section class="additions">
 		<div class="container">
 			<div class = "row">
-				<div class="col-sm-4">
+				<div class="col-sm-6 col-md-4">
 					<h2 class="destaques"> Aqui nossos <strong>médicos</strong> são: </h2> 
 					<div class="display">
 						<figure>
@@ -49,7 +50,7 @@
 					</div>
 				</div>
 
-				<div class="col-sm-8 update">
+				<div class="col-sm-6 col-md-8 update">
 					<div class="box">
 						<img src="img/banner1.jpg" class="img-thumbnail" height="300"> 
 					</div>
