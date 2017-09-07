@@ -9,15 +9,16 @@ $senha = $_POST['senha'];
 $login = $_POST['nome'];
 $senha = $_POST['senha'];
 $email = $_POST['email'];
+$type = "normal";
 $primeiroNome = $_POST['primeiroNome'];
 $segundoNome = $_POST['segundoNome'];
 $endereco = $_POST['endereco'];
 
 //inserindo dados
 
-$sql = "INSERT INTO cadastros (name,senha,email,primeiroNome,segundoNome,endereco) VALUES (?,?,?,?,?,?)";
+$sql = "INSERT INTO cadastros (name,senha,email,primeiroNome,segundoNome,endereco,tipo) VALUES (?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql);
-$stmt->bind_param("ssssss",$login,$senha,$email,$primeiroNome,$segundoNome,$endereco);
+$stmt->bind_param("sssssss",$login,$senha,$email,$primeiroNome,$segundoNome,$endereco,$type);
 
 //verificicando se houve resultset
 if($stmt->execute())
@@ -32,5 +33,7 @@ else{
 	header('location:logincadastro.php');
 	
 }
+
+// ******************************** testado: OK! *********************************
 
 ?>

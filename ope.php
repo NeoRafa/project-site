@@ -7,29 +7,39 @@ $login = $_POST['login'];
 $senha = $_POST['senha'];
 //*********************
 
-$sql = "SELECT * FROM cadastros WHERE name = ? AND senha = ?";
+$sql = "SELECT tipo FROM cadastros WHERE name = ? AND senha = ?";
 
 $stmt = $con->prepare($sql);
 $stmt->bind_param("ss",$login,$senha);
+$stmt->execute() or die("Erro 00");
 
-$stmt->execute();
-$resultset = $stmt->get_result();
 //verificicando se houve resultset
-if(mysqli_num_rows ($resultset) > 0)
+	//iterando para descobrir se o usuario eh medico ou paciente
+$stmt->bind_result($tipo) or die("Erro 01");
 
-{
-	echo "Login sucessful!";
+while ($stmt->fetch()) {
+	echo $tipo;
+	$type = $tipo;
+	
+}
+
+if($type == "medico"){
+	$_SESSION['medico'] = $login;
+	$_SESSION['medicoSenha'] = $senha;
+	header("location: indexCadastro.php");
+}
+else if($type == "normal") {
 	$_SESSION['login'] = $login;
 	$_SESSION['senha'] = $senha;
 	header('location:indexCadastro.php');
 }
-
 else{
 
 	unset ($_SESSION['login']);
 	unset ($_SESSION['senha']);
+	unset ($_SESSION['medico']);
+	unset ($_SESSION['medicoSenha']);
 	header('location:logincadastro.php');
-	
 }
-?>
+
 ?>

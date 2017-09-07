@@ -14,7 +14,7 @@ $database = 'agenda';
 //conexao ao db...
 
 $con = new mysqli($localhost,$user,$passwd,$database
-	) or die();
+	) or die("Erro na conexao ao database");
 
 if ($con->connect_error) {
 	die("Database connection failed: " . $con->connect_error);

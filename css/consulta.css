@@ -1,4 +1,17 @@
-.agendamento {
-	margin-top: 100px;
+body {
+	background-color:#e6e6e6;
+}
 
+.row {
+	font-family: 'Noto Serif', serif;
+	font-size: 18px;
+	color:#737373;
+}
+.jumbotron h1{
+	font-family: 'Courgette', cursive;
+	color:#666666;
+}
+.timesel {
+	margin-top: 30px;
+	margin-bottom: 15px;
 }
