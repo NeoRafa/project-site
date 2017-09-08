@@ -1,7 +1,9 @@
 	<link rel="stylesheet" type="text/css" href="css/cabecalho.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
-	<link rel="stylesheet" type="text/css" href="css/indexCadastro.css">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/indexCadastro.css">
 	<meta name="viewport" content="width=device-width">
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.js"></script>

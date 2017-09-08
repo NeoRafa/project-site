@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	
 	<title>Bem-vindo, cadastrado</title>
 	<!--iniciando sessao no navegador e verificando se usuario ja esta logado -->
 	<?php 

@@ -1,0 +1,16 @@
+
+body {
+	background-color:#e6e6e6;
+	
+}
+.jumbotron h2{
+	font-family: 'Courgette', cursive;
+	color:#666666;
+
+}
+.row, .panel {
+	font-family: 'Noto Serif', serif;
+	font-size: 18px;
+	color:#737373;
+}
+

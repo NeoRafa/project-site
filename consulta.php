@@ -56,10 +56,10 @@
 				var horario = $('#timeselect').val();
 				var med = $('#medselect').val();
 				if(med == null)
-					{
-						alert("Nenhum medico disponivel no dia desejado");
-						return false;
-					}
+				{
+					alert("Nenhum medico disponivel no dia desejado");
+					return false;
+				}
 				//impedindo a submissao nativamente
 				
 				$.post('validation.php',{dia: data, hora: horario, medselect: med}, function(response){
@@ -145,7 +145,15 @@
 
 		$(function() {
 			$( "#calendario" ).datepicker({
-				dateFormat: 'yy-mm-dd'
+				showButton: 'button',
+				dateFormat: 'yy-mm-dd',
+				dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+				dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+				dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+				monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+				monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+				minDate : "0d",
+				maxDate : "+30d"
 			}).val();
 		});	
 	});
@@ -183,7 +191,7 @@
 								<div class="form-group">
 									<label for="data">
 										Escolha um dia para sua consulta <?php echo $logado ?> </label>        
-										<input type="text" name="data" class="form-control" id="calendario" required>
+										<input type="text" name="data" class="form-control" id="calendario" placeholder="Clique aqui para exibir o calendario" required>
 										<p class="timesel"> Selecione um horario </p>
 										<select name='horario' id="timeselect"> 
 											<!-- Definindo horarios de funcionamento da clinica -->

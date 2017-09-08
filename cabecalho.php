@@ -20,10 +20,6 @@
 				if(!isset($_SESSION['medico']) && !isset($_SESSION['medicoSenha']))
 					echo
 				'<li><a href="#"><span class="glyphicon glyphicon-ok"></span> Agende sua consulta</a>
-					<ul>
-						<li><a href="consulta.php">Clinico</a>
-						</li>
-					</ul>
 				</li>';
 
 				?>
@@ -33,17 +29,19 @@
 				if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true) and (!isset ($_SESSION['medico']) == true) and (!isset ($_SESSION['medicoSenha']) == true))
 				{
 					echo
-					'<li> 
-					<a href="logincadastro.php"><span class="glyphicon glyphicon-user"></span>Criar cadastro</a>
+					'<li>
+
+					<a href="logincadastro.php"><span class="glyphicon glyphicon-user"></span> Criar cadastro </a>
+
 				</li>';
 			}
 			else {
 				echo
 				'<li> 
-				<a href="indexCadastro.php"><span class="glyphicon glyphicon-user"></span>Minha conta</a>
+				<a href="indexCadastro.php"><span class="glyphicon glyphicon-user"></span> Minha conta</a>
 			</li>
 				<li>
-				<a href="logout.php"> Sair </a>
+				<a href="logout.php"><span class="glyphicon glyphicon-off"></span> Sair </a>
 				</li>'
 				;
 		}

@@ -5,8 +5,8 @@
 	<title>Clinica MedConsulta Home</title>
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/cabecalho.css">
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/cabecalho.css">
 	<script src="js/jquery.js"></script>
 	<script src ="js/hoverf.js"></script>
 	<script src="js/scroll.js"></script>
