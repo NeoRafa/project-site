@@ -25,11 +25,14 @@ if($stmt->execute())
 {
 	$_SESSION['login'] = $login;
 	$_SESSION['senha'] = $senha;
+	$con->close();
+	$stmt->close();
 	header('location:indexCadastro.php');
 }
 else{
 	unset ($_SESSION['login']);
 	unset ($_SESSION['senha']);
+	$con->close();
 	header('location:logincadastro.php');
 	
 }

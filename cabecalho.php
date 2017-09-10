@@ -19,7 +19,7 @@
 				
 				if(!isset($_SESSION['medico']) && !isset($_SESSION['medicoSenha']))
 					echo
-				'<li><a href="#"><span class="glyphicon glyphicon-ok"></span> Agende sua consulta</a>
+				'<li><a href="consulta.php"><span class="glyphicon glyphicon-ok"></span> Agende sua consulta</a>
 				</li>';
 
 				?>

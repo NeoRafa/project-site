@@ -22,7 +22,7 @@
 		unset($_SESSION['login']);
 		unset($_SESSION['senha']);
 		unset($_SESSION['medico']);
-		nset($_SESSION['medicoSenha']);
+		unset($_SESSION['medicoSenha']);
 		header('location:index.php');
 	}
 

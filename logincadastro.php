@@ -2,12 +2,12 @@
 <html>
 <head>
 	<title>Faca seu Login!</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/cabecalho.css">
 	<link rel="stylesheet" type="text/css" href="css/createlogin.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="dist/js/bootstrap.min.js"></script>
 
 </head>
 

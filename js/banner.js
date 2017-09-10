@@ -1,22 +1,29 @@
-$('.box img').hide();
-var banners = ["img/banner1.jpg","img/banner2.jpg"];
-var bannerAtual = 0;
-function trocaBanner() {
-	
-	bannerAtual = (bannerAtual + 1) % 2;
-	return banners[bannerAtual];
+
+//script para ficar alternando imagens
+
+$(document).ready(function(){
+
+	var banners = ["img/banner1.jpg","img/banner2.jpg"];
+	var bannerAtual = 0;
+	function trocaBanner() {
+
+		bannerAtual = (bannerAtual + 1) % 2;
+		return banners[bannerAtual];
 
 
-}
+	}
 	setInterval(
 		function() {
-			var image = new Image();
-			$(image).load(function() {
-				$('.box img').fadeOut('slow', function() {
-				$('.box img').attr('src',image.src).fadeIn('slow');	
-				});
-			});
-			image.src = trocaBanner();
+			$('#banner2').attr('src',trocaBanner());
+			$('#banner1').fadeOut(
+				'slow',
+				function(){
+					$(this).attr('src', $('#banner2').attr('src')).fadeIn();
+				}
+				);
 		},
-		4500
-	);
+		3500
+		);
+
+});
+

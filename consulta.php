@@ -3,7 +3,7 @@
 <head>
 	<title>Marque sua consulta</title>
 	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/cabecalho.css">
 	<link rel="stylesheet" href="css/consulta.css">
 	<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet"> 
@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
 	<script src="js/jquery.js"></script>
+	<script src="dist/js/bootstrap.min.js"></script>
 	<!-- scripts e links da web -->
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
@@ -69,7 +70,6 @@
 					if(response != null){
 
 						for(var i = 0; i<response.length;i++){
-
 							if(data == response[i].data && horario == response[i].horario && med == response[i].medico){
 								alert("Data ja marcada!");
 								verify = false;
@@ -197,11 +197,11 @@
 											<!-- Definindo horarios de funcionamento da clinica -->
 
 											<?php 
-											$start = strtotime('10:00');
-											$end   = strtotime('18:00');
+											$start = strtotime('10:00:00');
+											$end   = strtotime('18:00:00');
 											for($i = $start; $i <= $end; $i+=30*60)
 												printf 
-											('<option value= %s >%s</option>',date('H:i',$i),date('g:i a',$i));
+											('<option value= %s >%s</option>',date('H:i:s',$i),date('g:i a',$i));
 											?>
 										</select>
 										<p class="timesel"> Selecione um medico : </p>

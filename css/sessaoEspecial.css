@@ -1,0 +1,10 @@
+
+.jumbotron h1,h2 {
+	font-family: 'Courgette', cursive;
+	color:#666666;
+	padding-top: 15px;
+}
+
+.checkbox {
+	margin-left: 10px;
+}
