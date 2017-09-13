@@ -22,37 +22,36 @@
 	
 	session_start();
 	
-	if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+	if(!(isset ($_SESSION['login'])) and !(isset ($_SESSION['senha'])) and !($_SESSION['nivel'] == 1))
 	{
-		unset($_SESSION['login']);
-		unset($_SESSION['senha']);
+		session_destroy();
 		header('location:logincadastro.php');
 	}
+	
 	$logado = $_SESSION['login'];
 
 	?>
 
 
 	<style type="text/css">
-		.posicionar {
-			margin-top: 60px;
-		}
+	.posicionar {
+		margin-top: 60px;
+	}
 	</style>
 
 
 	<script type="text/javascript">
 
-		$(document).ready(function () {
+	$(document).ready(function () {
 
-			$('#calendario').change(function() {
-				var option = $(this).val();
-				criarMedicosDisponiveis(option);
-				return false;
-			});
+		$('#calendario').change(function() {
+			var option = $(this).val();
+			criarMedicosDisponiveis(option);
+			return false;
+		});
 
-			$('#butt').click(function() {
+		$('#butt').click(function() {
 				//variaveis necessarias
-				var form = this;
 				var data = $('#calendario').val();
 				var horario = $('#timeselect').val();
 				var med = $('#medselect').val();
@@ -61,6 +60,7 @@
 					alert("Nenhum medico disponivel no dia desejado");
 					return false;
 				}
+
 				//impedindo a submissao nativamente
 				
 				$.post('validation.php',{dia: data, hora: horario, medselect: med}, function(response){
@@ -88,7 +88,7 @@
 
 
 
-			function criarMedicosDisponiveis(option) {
+		function criarMedicosDisponiveis(option) {
 			//variavies necessarios
 			var d = new Date(option);
 			dia = d.getDay();
@@ -138,25 +138,25 @@
 						}
 					}
 				});
-		}
+}
 
 
 
 
-		$(function() {
-			$( "#calendario" ).datepicker({
-				showButton: 'button',
-				dateFormat: 'yy-mm-dd',
-				dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
-				dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-				dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-				monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-				monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-				minDate : "0d",
-				maxDate : "+30d"
-			}).val();
-		});	
-	});
+$(function() {
+	$( "#calendario" ).datepicker({
+		showButton: 'button',
+		dateFormat: 'yy-mm-dd',
+		dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+		dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+		dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+		monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+		monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+		minDate : "0d",
+		maxDate : "+30d"
+	}).val();
+});	
+});
 </script>
 </head>
 

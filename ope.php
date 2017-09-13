@@ -1,45 +1,56 @@
 <?php 
 
+session_start();
+
+
+require("PassHash.php");
 
 include("connection.php");
+
 //variaveis locais
 $login = $_POST['login'];
 $senha = $_POST['senha'];
 //*********************
 
-$sql = "SELECT tipo FROM cadastros WHERE name = ? AND senha = ?";
+$sql = "SELECT senha,nivel FROM cadastros WHERE name = ?";
 
 $stmt = $con->prepare($sql);
-$stmt->bind_param("ss",$login,$senha);
+$stmt->bind_param("s",$login);
 $stmt->execute() or die("Erro 00");
 
 //verificicando se houve resultset
 	//iterando para descobrir se o usuario eh medico ou paciente
-$stmt->bind_result($tipo) or die("Erro 01");
+$stmt->bind_result($passwd,$nivel1) or die("Erro 01");
 
 while ($stmt->fetch()) {
-	echo $tipo;
-	$type = $tipo;
+	$nivel = $nivel1;
+	$password = $passwd;
 	
 }
 
-if($type == "medico"){
-	$_SESSION['medico'] = $login;
-	$_SESSION['medicoSenha'] = $senha;
-	header("location: indexCadastro.php");
-}
-else if($type == "normal") {
+// verifique se a senha usada bate com o hash guardado
+
+if (PassHash::check_password($password,$senha)) {
+
+	if (!isset($_SESSION)) session_start();
 	$_SESSION['login'] = $login;
 	$_SESSION['senha'] = $senha;
-	header('location:indexCadastro.php');
+	$_SESSION['nivel'] = $nivel;
+	if($nivel <= 3) {
+	header("location: indexCadastro.php"); exit;
+	}
+	else {
+	header("location: adm.php"); exit;
+	}	
 }
-else{
 
-	unset ($_SESSION['login']);
-	unset ($_SESSION['senha']);
-	unset ($_SESSION['medico']);
-	unset ($_SESSION['medicoSenha']);
-	header('location:logincadastro.php');
+else {
+
+	session_destroy();
+	header('location:logincadastro.php'); exit;
+
 }
+
+
 
 ?>

@@ -8,22 +8,21 @@
 
 	session_start();
 
-	if((isset ($_SESSION['login']) == true) and (isset ($_SESSION['senha']) == true))
+	if((isset ($_SESSION['login'])) and (isset ($_SESSION['senha'])) and ($_SESSION['nivel']==1))
 	{
 		$logado = $_SESSION['login'];
 		include("sessaoNormal.php");
 	}
-	else if((isset ($_SESSION['medico']) == true) and (isset ($_SESSION['medicoSenha']) == true)){
-		$logado = $_SESSION['medico'];
-		include("sessaoEspecial.php");
+	
+	else if((isset ($_SESSION['login'])) and (isset ($_SESSION['senha'])) and ($_SESSION['nivel']==2)){
+		$logado = $_SESSION['login'];
+		include("sessaoEspecial.php"); 
 	}
 
 	else {
-		unset($_SESSION['login']);
-		unset($_SESSION['senha']);
-		unset($_SESSION['medico']);
-		unset($_SESSION['medicoSenha']);
-		header('location:index.php');
+		
+		session_destroy();
+		header('location:index.php'); exit;
 	}
 
 	?>

@@ -11,12 +11,11 @@
 	<!-- SCRIPT DE ADICAO DE AGENDA -->
 	<script type="text/javascript">
 		//definindo aqui a funcao da agenda
+
 		$(document).ready(function() {
 
-
-
 			$('#target').click(function() {
-				var medico = <?php echo json_encode($_SESSION['medico']); ?>;
+				var medico = <?php echo json_encode($_SESSION['login']); ?>;
 				$.post('pesquisaAgenda.php', { med : medico},
 					function( data ) {
 						//limpando a agenda
@@ -67,6 +66,7 @@
 	</script>
 
 </head>
+
 <body>
 	<?php include("cabecalho.php"); ?>
 	<!-- MIOLO DO CODIGO -->

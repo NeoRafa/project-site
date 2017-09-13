@@ -9,6 +9,32 @@
 	<script src="js/jquery.js"></script>
 	<script src="dist/js/bootstrap.min.js"></script>
 
+	<script type="text/javascript">
+	$(document).ready( function() {
+
+		$('#nome').change( function() {
+			login = $(this).val();
+			$.post('verifyexistence.php', {nome : login}, function(response) {
+				if(response.status == "ok") {
+					$('.loginExistente').html("");
+				}
+				else {
+					$('.loginExistente').html("");
+					$('.loginExistente').append("<p> Nome de usuário já utilizado. Escolha outro login. </p>");
+				}
+			},'JSON');
+		});
+
+		$('#form').submit(function() {
+				var txt = $('.loginExistente p').text();
+				if(txt == " Nome de usuário já utilizado. Escolha outro login. ")
+				return false;
+			else return true;
+		});
+	}
+	);
+	</script>
+
 </head>
 
 <body>
@@ -22,7 +48,7 @@
 	<section>
 		<div class="jumbotron">	
 			<div class="container">
-				<h1>Voce deve se cadastrar para agendar uma consulta. E rapidinho ;) </h1>
+				<h1>Você deve se cadastrar para agendar uma consulta. É rapidinho ;) </h1>
 			</div>
 		</div>
 		<!-- MONTANDO OS FORMS DE LOGIN E CADASTRO -->
@@ -48,11 +74,15 @@
 				</div>
 				<div class="col-sm-6 afastarfundo">
 					<h2>Quero criar minha conta</h2>
-					<form action="createlogin.php" method='POST'>
+					<form action="createlogin.php" method='POST' id="form">
 
 						<div class="form-group">
 							<label for="nome">Insira seu login: </label>
 							<input type="text" name="nome" id="nome" class="form-control" required>
+						</div>
+
+						<div class="loginExistente">
+
 						</div>
 
 						<div class="form-group">

@@ -1,39 +1,57 @@
 <?php 
 
+session_start();
+
+require ("PassHash.php");
 
 include("connection.php");
 
 
-$login = $_POST['login'];
-$senha = $_POST['senha'];
 $login = $_POST['nome'];
-$senha = $_POST['senha'];
 $email = $_POST['email'];
-$type = "normal";
+$senha = $_POST['senha'];
+$nivel = 1;
 $primeiroNome = $_POST['primeiroNome'];
 $segundoNome = $_POST['segundoNome'];
 $endereco = $_POST['endereco'];
+//validando dados
 
-//inserindo dados
+if($login == 'adm') {
+	$nivel = 4;
+}
+else {
+	$nivel = 1;
+}
 
-$sql = "INSERT INTO cadastros (name,senha,email,primeiroNome,segundoNome,endereco,tipo) VALUES (?,?,?,?,?,?,?)";
+//encriptando senha
+
+$pass_hash = PassHash::hash($senha);
+
+echo $pass_hash;
+ 
+ //salvandando dados na cadeia
+
+$sql = "INSERT INTO cadastros (name,senha,email,primeiroNome,segundoNome,endereco,nivel) VALUES (?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql);
-$stmt->bind_param("sssssss",$login,$senha,$email,$primeiroNome,$segundoNome,$endereco,$type);
+
+$stmt->bind_param("ssssssi",$login,$pass_hash,$email,$primeiroNome,$segundoNome,$endereco,$nivel);
 
 //verificicando se houve resultset
 if($stmt->execute())
 {
 	$_SESSION['login'] = $login;
-	$_SESSION['senha'] = $senha;
+	$_SESSION['senha'] = $pass_hash;
+	$_SESSION['nivel'] = $nivel;
 	$con->close();
 	$stmt->close();
-	header('location:indexCadastro.php');
+	header('location:indexCadastro.php'); exit;
+
 }
 else{
-	unset ($_SESSION['login']);
-	unset ($_SESSION['senha']);
+	
+	session_destroy();
 	$con->close();
-	header('location:logincadastro.php');
+	header('location:logincadastro.php'); exit;
 	
 }
 

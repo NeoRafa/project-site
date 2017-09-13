@@ -6,7 +6,7 @@ session_start();
 
 //variaveis locais 
 $localhost = 'localhost';
-$passwd = '32060047_ac';
+$passwd = '';
 $user = 'root';
 $database = 'agenda';
 

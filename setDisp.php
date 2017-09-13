@@ -2,13 +2,12 @@
 //conectando-se ao database
 include("connection.php");
 //verificando se o medico esta logado
-if(!isset($_SESSION['medico']) and !isset($_SESSION['medicoSenha'])){
-	unset($_SESSION['medico']);
-	unset($_SESSION['medicoSenha']);
+if(!isset($_SESSION['login']) and !($_SESSION['nivel']==2)){
+	session_destroy();
 	header("location: index.php");
 }
 //definindo variaveis locais
-$medico = $_SESSION['medico'];
+$medico = $_SESSION['login'];
 $buscaDias = array("segunda"=>0,"terca"=>0,"quarta"=>0,"quinta"=>0,"sexta"=>0);
 
 //verificar que dias foram escolhidos:
