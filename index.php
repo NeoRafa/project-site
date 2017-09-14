@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Clinica MedConsulta Home</title>
+	<title>MedConsulta Home</title>
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/cabecalho.css">
@@ -18,7 +18,7 @@
 <body>
 
 	<?php include("cabecalho.php") ?>
-	<div class="container">
+	<div class="container" style="margin-top:10px">
 		<section class="additions">
 			<div class = "row">
 				<div class="col-sm-6 col-md-4 col-md-push-8" style="margin-top: 40px">
@@ -89,7 +89,7 @@
 				<div class="col-sm-4">
 					<div class="panel" style="border-radius:2%; background-color:#e6e6e6">
 						<h2 class="destaques">  Rápido atendimento </h2>
-						<h3 class="destaques"> Trabalhamos para atendermos pacientes rapidamente, sem filas ou esperar. Encontre aqui a praticidade.</h3>
+						<h3 class="destaques"> Trabalhamos para atendermos pacientes rapidamente, sem filas ou espera. Encontre aqui a praticidade.</h3>
 					</div>
 				</div>
 			</div>
@@ -101,7 +101,8 @@
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
 						<figure>
-							<img src="img/checked.png" alt="confianca">
+							
+							<span class="glyphicon glyphicon-ok" style="font-size:64px; color:#53c653"> </span>
 							<figcaption>
 								Nenhum dos nossos médicos possui menos que quinze anos de experiência: escolhemos a dedo nossos médicos para que você receba sempre a consulta mais completa. 
 							</figcaption>
@@ -113,10 +114,9 @@
 					<div class="row">
 						<div class="col-sm-6 col-sm-offset-3">
 							<figure>
-								<img src="img/file.png" alt="ficha">
+								<span class="glyphicon glyphicon-list-alt" style="font-size:64px; color:#53c653" > </span>
 								<figcaption>
 									Somos uma policlinica, ou seja, contamos com diversas especializacoes: psiquiatra, clinico, oftalmologista e cardio. Fique tranquilo: teremos o que voce procura.
-									<i class= "em em-clap"></i>
 								</figcaption>
 							</figure>
 						</div>
@@ -128,9 +128,9 @@
 					<div class="row">
 						<div class="col-sm-6 col-sm-offset-3">
 							<figure>
-								<img src="img/thumb-up.png" alt="carinho">
+								<span class="glyphicon glyphicon-heart" style="font-size:64px; color:#53c653"> </span>
 								<figcaption id="joinha">
-									Prezamos pela nossa relacao com voce. Somos atenciosos e escutaremos todas suas queixas: espere sempre ser bem atendido.
+									Acreditamos que os médicos devem amar cuidar das pessoas, e não apenas tratar isso como profissão: é uma forma de viver. 
 								</figcaption>
 							</figure>
 						</div>
@@ -138,9 +138,9 @@
 				</div>
 			</div>
 		</section>
-		<section class="final">
+		<section class="final" style="margin-top:20px; margin-bottom:20px">
 			<div class="hideme">
-				<h2 class="destaque1">Venha ver nossos <strong>serviços</strong>: </h2>
+				<h2 class="destaque1" style="padding-top:16px">Venha ver nossos <strong>serviços</strong>: </h2>
 				<div class="row">
 					<div class="col-sm-6">
 						<figure class="consultaservico">

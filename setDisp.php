@@ -18,6 +18,8 @@ if(!empty($_POST['dia'])) {
 	}
 }
 
+$especialidade = $_POST['especialidade'];
+
 
 //buscar se medico ja definiu anteriormente suas disponibilidades
 
@@ -33,9 +35,9 @@ $result = $stmt->get_result();
 
 if($result->num_rows>0){
 
-	$query = "UPDATE disponibilidades SET segunda=?, terca=?, quarta=?, quinta=?, sexta=? WHERE medico=?";
+	$query = "UPDATE disponibilidades SET segunda=?, terca=?, quarta=?, quinta=?, sexta=?, especialidade=? WHERE medico=?";
 	$stm = $con->prepare($query) or die("erro ao preparar banco");
-	$stm->bind_param("iiiiis",$buscaDias['segunda'],$buscaDias['terca'],$buscaDias['quarta'],$buscaDias['quinta'],$buscaDias['sexta'],$medico);
+	$stm->bind_param("iiiiiss",$buscaDias['segunda'],$buscaDias['terca'],$buscaDias['quarta'],$buscaDias['quinta'],$buscaDias['sexta'],$especialidade,$medico);
 
 	$stm->execute() or die("Erro ao adicionar variavel!");
 
@@ -44,9 +46,9 @@ if($result->num_rows>0){
 else {
 
 
-	$query = "INSERT INTO disponibilidades (medico,segunda,terca,quarta,quinta,sexta) VALUES(?,?,?,?,?,?)";
+	$query = "INSERT INTO disponibilidades (medico,segunda,terca,quarta,quinta,sexta,especialidade) VALUES(?,?,?,?,?,?,?)";
 	$stm = $con->prepare($query) or die("erro ao preparar banco");
-	$stm->bind_param("siiiii",$medico,$buscaDias['segunda'],$buscaDias['terca'],$buscaDias['quarta'],$buscaDias['quinta'],$buscaDias['sexta']);
+	$stm->bind_param("siiiiis",$medico,$buscaDias['segunda'],$buscaDias['terca'],$buscaDias['quarta'],$buscaDias['quinta'],$buscaDias['sexta'],$especialidade);
 
 	$stm->execute() or die("Erro ao adicionar variavel!");
 
@@ -58,7 +60,7 @@ $con->close();
 $stmt->close();
 $stm->close();
 
-header("location: indexCadastro.php")
+header("location: indexCadastro.php"); exit;
 
 ?>
 

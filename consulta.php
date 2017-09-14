@@ -46,8 +46,14 @@
 
 		$('#calendario').change(function() {
 			var option = $(this).val();
+			$('.inner').html(" ");
 			criarMedicosDisponiveis(option);
-			return false;
+		});
+
+		$('#especialidade').change( function() {
+			var option = $('#calendario').val();
+			$('.inner').html(" ");
+			criarMedicosDisponiveis(option);
 		});
 
 		$('#butt').click(function() {
@@ -55,6 +61,7 @@
 				var data = $('#calendario').val();
 				var horario = $('#timeselect').val();
 				var med = $('#medselect').val();
+				var logado = <?php echo json_encode($logado);?>;
 				if(med == null)
 				{
 					alert("Nenhum medico disponivel no dia desejado");
@@ -62,19 +69,11 @@
 				}
 
 				//impedindo a submissao nativamente
-				
-				$.post('validation.php',{dia: data, hora: horario, medselect: med}, function(response){
-
+				$.post('validation.php',{dia: data, hora: horario, medselect: med, login : logado}, function(response){
 					var verify = true;
-
-					if(response != null){
-
-						for(var i = 0; i<response.length;i++){
-							if(data == response[i].data && horario == response[i].horario && med == response[i].medico){
-								alert("Data ja marcada!");
-								verify = false;
-							}
-						}
+					if(response.length > 0){
+						alert("Uma consulta já está marcada!");
+						verify = false;
 					}
 
 					if(verify){
@@ -95,6 +94,8 @@
 			if(dia>=5)
 				return false;
 			var meds = [];
+			var especialidade = $('#especialidade').val();
+
 			//Recebendo lista com todos os medicos codificados com ajax
 
 			$.ajax({
@@ -102,33 +103,33 @@
 				url: "getDias.php",
 				dataType: 'json',
 				success: function(data){
+					
 						//buscando os medicos com horario compativel
 						k = 0;
 						for(var i = 0; i<data.length; i++){
 							j = 0;
 							j+= data[i].segunda;
-							if(j==1 && dia==0)
+							if(j==1 && dia==0 && data[i].especialidade == especialidade)
 								meds[k++] = data[i].medico;
 							j=0;	 
 							j+= data[i].terca;
-							if(j==1 && dia==1)
+							if(j==1 && dia==1 && data[i].especialidade == especialidade)
 								meds[k++] = data[i].medico;	   
 							j=0;	 
 							j+= data[i].quarta;
-							if(j==1 && dia==2)
+							if(j==1 && dia==2 && data[i].especialidade == especialidade)
 								meds[k++] = data[i].medico;	   
 							j=0;	 
 							j+= data[i].quinta;
-							if(j==1 && dia==3)
+							if(j==1 && dia==3 && data[i].especialidade == especialidade)
 								meds[k++] = data[i].medico;	
 							j=0;
 							j+= data[i].sexta;
-							if(j==1 && dia==4)
+							if(j==1 && dia==4  && data[i].especialidade == especialidade)
 								meds[k++] = data[i].medico;   
 						}
 
 						//verificando se foi encontrado no minimo um medico disponivel e limpando options
-						$('.inner').html("");
 						if(k==0)
 							return false;
 
@@ -175,20 +176,29 @@ $(function() {
 	<section>
 		<div class="container posicionar">
 			<div class="row">
-				<div class = "col-sm-6">
+				<div class = "col-sm-4">
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<p>
-								Com o nosso sistema de agendamento, voce escolhe um dia e um horario e retornamos se ha vagas! Caso nao haja, voce so precisa tentar de novo em outra hora. Beleza pura.
+								Nosso sistema de agendamento online colocará automaticamente você com algum médico disponível no horário solicitado. Se não houver nenhum disponível, tente novamente em outro horário! Obrigado!
 							</p>
 						</div>
 					</div>
 				</div>
-				<div class ="col-sm-6">
+				<div class ="col-sm-8">
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<form action="criarconsulta.php" method="POST" id="target">
 								<div class="form-group">
+									<label for="espec">
+										Selecione uma especialidade para sua consulta:
+									</label>
+									<select name="especialidade" id="especialidade" name="espec" style="margin-bottom:20px">
+										<option value="clinico"> Clinico </option>
+										<option value="psiquiatra"> Psiquiatra </option>
+										<option value ="Oftalmologista"> Oftalmologista </option>
+									</select>
+
 									<label for="data">
 										Escolha um dia para sua consulta <?php echo $logado ?> </label>        
 										<input type="text" name="data" class="form-control" id="calendario" placeholder="Clique aqui para exibir o calendario" required>
@@ -204,6 +214,7 @@ $(function() {
 											('<option value= %s >%s</option>',date('H:i:s',$i),date('g:i a',$i));
 											?>
 										</select>
+
 										<p class="timesel"> Selecione um medico : </p>
 										<select class="inner" name="medselect" id="medselect">
 

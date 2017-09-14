@@ -3,11 +3,10 @@
 include("connection.php");
 
 //verificando se o usuario esta logado
-if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+if((!isset ($_SESSION['login'])) && !($_SESSION['nivel']==1))
 {
-	unset($_SESSION['login']);
-	unset($_SESSION['senha']);
-	header('location:logincadastro.php');
+	session_destroy();
+	header('location:logincadastro.php'); exit;
 }
 
 //definindo variaveis locais
